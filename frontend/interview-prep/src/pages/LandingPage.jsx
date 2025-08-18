@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HERO_IMG from "../assets/hero-img.png";
 import {APP_FEATURES} from "../utils/data";
 import {useNavigate} from "react-router-dom"
+import {LuSparkles} from "react-icons/lu"
 
 const LandingPage = () => {
     const navigate = useNavigate();
@@ -12,41 +13,108 @@ const LandingPage = () => {
     const handleCTA = () => {};
 
     return(
-        <div className="w-full min-h-screen bg-[#FFFCEF] relative">
-  {/* Blurred background box */}
-  <div className="w-[500px] h-[500px] bg-amber-200/20 blur-[65px] absolute top-0 left-0 z-0"></div>
+      <>
+        <div className="w-full min-h-screen bg-[#FFFCEF]">
+          {/* Blurred background box */}
+          <div className="w-[500px] h-[500px] bg-amber-200/20 blur-[65px] absolute top-0 left-0 z-0"></div>
+          {/* Actual content */}
+          <div className="container mx-auto px-4 pt-6 pb-[200px] relative z-10 ">
+            <header className="flex justify-between items-center mb-16">
+              <div className="text-xl text-black font-bold">
+                Interview Prep AI
+              </div>
+              <button 
+              className="bg-gradient-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-7 py-2.5 rounded-full hover:bg-black hover:text-white border border-white transition-colors cursor-pointer"
+              onClick={()=>setOpenAuthModel(true)}
+              >
+                Login / Sign Up
+              </button>
+            </header>
+            <div className="flex flex-col md:flex-row items-center">
+              <div className="w-full md:w-1/2 pr-4 mb-8 md:mb-8">
+                <div className="flex items-center justify-left mb-2">
+                  <div className="flex items-center gap-2 text-[13px] text-amber-600 font-semibold bg-amber-100 px-3 py-1 rounded-full border border-amber-300">
+                    <LuSparkles />AI Powered
+                  </div>
+                </div>
+                <h1 className="text-4xl text-black font-medium mb-6 leading-tight">
+                  Ace Interviews with <br />
+                  <span className="text-transparent bg-clip-text bg-[radial-gradient(circle,_#FF9324_0%,_#FCD760_100%)] bg-[length:200%_200%] animate-text-shine font-semibold">
+                    AI-Powered
+                  </span>{" "}
+                    Learning
+                </h1>
+              </div>
+              <div className="w-full md:w-1/2">
+              <p className="text-[17px] text-gray-900 mr-0 md:mr-20 mb-6">
+                Get role-specific questions, expand answers when you need them,
+                dive deeper into concepts, and organise everything your way.
+                From preparation to mastery - your ultimate interview toolkit is here.
+              </p>
+              <button className="bg-black text-sm font-semibold text-white px-7 py-2.5 rounded-full hover:bg-yellow-100 hover:text-black border border-yellow-50 hover:border-yellow-300 transition-colors cursor-pointer" 
+              onClick={handleCTA}>
+                Get Started
+              </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  {/* Actual content */}
-  <div className="container mx-auto px-4 pt-6 pb-[200px] relative z-10 text-black">
-    <header className="flex justify-between items-center mb-16">
-      <div className="text-xl font-bold">Interview Prep AI</div>
-      <button className="bg-gradient-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-7 py-2.5 rounded-full hover:bg-black hover:text-white border border-white transition-colors cursor-pointer">
-        Login / Sign Up
-      </button>
-    </header>
+        <div className="w-full min-h-full relative z-10 mb-56">
+          <div>
+            <section className="flex items-center justify-center -mt-36">
+              <img 
+                src={HERO_IMG}
+                alt="Hero Image" 
+                className="w-[80vw] rounded-lg"
+              />
+            </section>
+          </div>
 
-    <div className="flex flex-col md:flex-row items-center">
-      <div className="w-full md:w-1/2 pr-4 mb-8 md:mb-8">
-        <div className="text-lg font-semibold">AI Powered</div>
-        <h1 className="text-4xl font-bold mt-4 text-black">
-          Ace Interviews with <br />
-          <span className="text-orange-600">AI-Powered</span> Learning
-        </h1>
-      </div>
-      <div className="md:w-1/2">
-        <p className="text-md text-gray-700 mb-6">
-          Get role-specific questions, expand answers when you need them,
-          dive deeper into concepts, and organise everything your way.
-          From preparation to mastery - your ultimate interview toolkit is here.
-        </p>
-        <button className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600">
-          Get Started
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
+          <div className="">
+            <div className="">
+              <section className="">
+                <h2 className="">
+                  Features that make you shine
+                </h2>
+                <div className="">
+                  {/* First 3 cards */}
+                  <div className="">
+                    {APP_FEATURES.slice(0,3).map((feature)=>(
+                      <div
+                        key={feature.id}
+                        className=""
+                      >
+                        <h3 className="">
+                          {feature.title}
+                        </h3>
+                        <p className="">{feature.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Remaining 2 cards */}
+                  <div className="">
+                    {APP_FEATURES.slice(0,3).map((feature)=>(
+                      <div
+                        key={feature.id}
+                        className=""
+                      >
+                        <h3 className="">
+                          {feature.title}
+                        </h3>
+                        <p className="">{feature.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div className="">
+            Made with ...
+          </div>
+        </div>
+      </>
     )
 }
 
