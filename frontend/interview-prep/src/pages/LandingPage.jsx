@@ -3,6 +3,7 @@ import HERO_IMG from "../assets/hero-img.png";
 import {APP_FEATURES} from "../utils/data";
 import {useNavigate} from "react-router-dom"
 import {LuSparkles} from "react-icons/lu"
+import Modal from "../Loader/Modal";
 
 const LandingPage = () => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const LandingPage = () => {
 
     return(
       <>
-        <div className="w-full min-h-screen bg-[#FFFCEF]">
+        <div className="w-full min-h-full bg-[#FFFCEF]">
           {/* Blurred background box */}
           <div className="w-[500px] h-[500px] bg-amber-200/20 blur-[65px] absolute top-0 left-0 z-0"></div>
           {/* Actual content */}
@@ -60,7 +61,7 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="w-full min-h-full relative z-10 mb-56">
+        <div className="w-full min-h-full relative z-10 ">
           <div>
             <section className="flex items-center justify-center -mt-36">
               <img 
@@ -71,38 +72,38 @@ const LandingPage = () => {
             </section>
           </div>
 
-          <div className="">
-            <div className="">
-              <section className="">
-                <h2 className="">
+          <div className="w-full min-h-full bg-[#FFFCEF] mt-10">
+            <div className="container mx-auto px-4 pt-10 pb-20">
+              <section className="mt-5">
+                <h2 className="text-2xl font-medium text-center mb-12">
                   Features that make you shine
                 </h2>
-                <div className="">
+                <div className="flex flex-col items-center gap-8">
                   {/* First 3 cards */}
-                  <div className="">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
                     {APP_FEATURES.slice(0,3).map((feature)=>(
                       <div
                         key={feature.id}
-                        className=""
+                        className="bg-[#FFFEFB] p-6 rounded-xl shadow-xs hover:shadow-lg shadow-amber-100 transition border border-amber-100"
                       >
-                        <h3 className="">
+                        <h3 className="text-base font-semibold mb-3">
                           {feature.title}
                         </h3>
-                        <p className="">{feature.description}</p>
+                        <p className="text-gray-600">{feature.description}</p>
                       </div>
                     ))}
                   </div>
                   {/* Remaining 2 cards */}
-                  <div className="">
-                    {APP_FEATURES.slice(0,3).map((feature)=>(
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {APP_FEATURES.slice(3).map((feature)=>(
                       <div
                         key={feature.id}
-                        className=""
+                        className="bg-[#FFFEFB] p-6 rounded-xl shadow-xs hover:shadow-lg shadow-amber-100 transition border border-amber-100"
                       >
-                        <h3 className="">
+                        <h3 className="text-base font-semibold mb-3">
                           {feature.title}
                         </h3>
-                        <p className="">{feature.description}</p>
+                        <p className="text-gray-600">{feature.description}</p>
                       </div>
                     ))}
                   </div>
@@ -110,12 +111,29 @@ const LandingPage = () => {
               </section>
             </div>
           </div>
-          <div className="">
-            Made with ...
+          <div className="text-sm bg-gray-50 text-secondary text-center p-5 mt-5">
+            Made with ❤️... Happy Coding
           </div>
         </div>
+        <Modal 
+            isOpen={openAuthModel}
+            onClose={()=>{
+              setOpenAuthModel(false);
+              setCurrentPage("Login");
+            }}
+            hideHeader
+        >
+          <div>
+            {currentPage === "login" && (
+              <Login setCurrentPage={setCurrentPage}/>
+            )}
+            {currentPage === "signUp" &&(
+              <SignUp setCurrentPage={setCurrentPage}/>
+            )}
+          </div>
+        </Modal>
       </>
     )
-}
+};
 
-export default LandingPage
+export default LandingPage;
