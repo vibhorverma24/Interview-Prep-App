@@ -7,17 +7,33 @@ const Input = ({value,onChange,label,placeholder,type}) => {
         setShowPassword(!showPassword);
     }
     return <div>
-        <label className="">{label}</label>
-        <div className="">
+        <label className="text-[13px] text-slate-800" >{label}</label>
+        <div className="input-box">
             <input type={
                 type=="password" ? (showPassword ? "text" : "password"): type
                 }
                 placeholder={placeholder}
-                className=""
+                className="w-full bg-transparent outline-none"
                 value={value}
                 onChange={(e)=>onChange(e)}
                 />
-                
+                {type === "password" && (
+                    <>
+                      {showPassword?(
+                        <FaRegEye 
+                          size={22}
+                          className="text-primary cursor-pointer"
+                          onClick={()=>toggleShowpassword()}
+                        />
+                      ):(
+                        <FaRegEyeSlash
+                          size = {22}
+                          className="text-slate-400 cursor-pointer"
+                          onClick={()=>toggleShowpassword()}
+                        />
+                      )}
+                    </>
+                )}
         </div>
     </div>
 }
