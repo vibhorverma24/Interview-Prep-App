@@ -1,11 +1,11 @@
-import react from 'react'
+import React from 'react'
 
 const Modal = ({children,isOpen,onClose,title ,hideHeader}) => {
     if(!isOpen) return null;
     return (
-    <div className="fixed inset-0 z-50 flex justify-center item-center w-full h-full bg-black/40">
+    <div className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black/40">
         {/* Modal Content */}
-        <div className={`relative flex flex-col bg-white shadow-lg rounded-lg overflow`}>
+        <div className={`relative flex flex-col bg-white shadow-lg rounded-lg overflow-hidden`}>
             {/* Modal Header */}
             {!hideHeader && (
                 <div className="flex items-center justify-between p-4 border-b border-gray-200">
@@ -29,7 +29,7 @@ const Modal = ({children,isOpen,onClose,title ,hideHeader}) => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d = "M1 1l6 6n0 0l6 6M7 7l6-6M7 7l-6 6"
+                  d="M1 1l6 6m0 0l6 6M7 7l6-6M7 7l-6 6"
                 />
                </svg>
             </button>

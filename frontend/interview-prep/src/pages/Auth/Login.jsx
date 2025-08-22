@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Input from "../../components/inputs/input"
 
-const Login = (setCurrentPage) => {
+const Login = ({setCurrentPage}) => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [error,setError] = useState(null);
@@ -18,7 +19,7 @@ const Login = (setCurrentPage) => {
             Please enter your details to log in
         </p>
         <form onSubmit={handleLogin}>
-            <Input
+            {/* <Input
               value={email}
               onChange={({target})=>setEmail(target.value)}
               label ="Email Address"
@@ -42,12 +43,12 @@ const Login = (setCurrentPage) => {
                 <button
                   className="font-medium text-primary underline cursor-pointer"
                   onClick={()=>{
-                    setCurrentPage("signup");
+                    setCurrentPage("Signup");
                   }}
                 >
                     SignUp
                 </button>
-            </p>
+            </p> */}
         </form>
     </div>
     );
