@@ -19,7 +19,7 @@ const Login = ({setCurrentPage}) => {
             Please enter your details to log in
         </p>
         <form onSubmit={handleLogin}>
-            {/* <Input
+            <Input
               value={email}
               onChange={({target})=>setEmail(target.value)}
               label ="Email Address"
@@ -46,9 +46,9 @@ const Login = ({setCurrentPage}) => {
                     setCurrentPage("Signup");
                   }}
                 >
-                    SignUp
+                  SignUp
                 </button>
-            </p> */}
+            </p>
         </form>
     </div>
     );
